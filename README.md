@@ -12,7 +12,7 @@ This project explores two different approaches to Cubit injection:
 ✅ **Suitable for:** Small to medium apps where Cubits are shared across multiple screens or features.  
 🔁 **Key Feature:** All screens access a single shared NotesCubit instance.  
 
-### Feature Branch (feature/local-cubit-injection)
+### Feature Branch (feature/local-cubit-scope)
 
 🧪 **Purpose:** Testing local Cubit injection only in screens where needed (BlocProvider inside each route).  
 ✅ **Suitable for:** Modular apps where features are isolated.  
