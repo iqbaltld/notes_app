@@ -6,6 +6,65 @@ import 'package:notes_app/features/notes/presentation/screens/widgets/note_tile.
 class NotesListScreen extends StatelessWidget {
   const NotesListScreen({super.key});
 
+  addNote(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        String title = '';
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Add New Note',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Note Title',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (value) => title = value,
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (title.trim().isNotEmpty) {
+                        context.read<NotesCubit>().addNote(title.trim());
+                        Navigator.pop(context);
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                      ),
+                    ),
+                    child: const Text('Add Note'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +94,12 @@ class NotesListScreen extends StatelessWidget {
                     color: Colors.blue,
                   )));
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          addNote(context);
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

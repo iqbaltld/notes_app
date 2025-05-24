@@ -13,7 +13,7 @@ class NotesCubit extends Cubit<NotesState> {
 
   Future<void> getNotes() async {
     emit(NotesLoading());
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     try {
       final notes = await getNotesUseCase.call();
       emit(NotesLoaded(notes));
@@ -32,6 +32,22 @@ class NotesCubit extends Cubit<NotesState> {
         return note;
       }).toList();
 
+      emit(NotesLoaded(updatedNotes));
+    }
+  }
+
+  void addNote(String title) {
+    if (state is NotesLoaded) {
+      final currentState = state as NotesLoaded;
+      final notes = currentState.notes;
+      final newId =
+          (notes.isEmpty ? 1 : int.parse(notes.last.id) + 1).toString();
+      final newNote = Note(
+        id: newId,
+        title: title,
+        isFavorite: false,
+      );
+      final updatedNotes = [...notes, newNote];
       emit(NotesLoaded(updatedNotes));
     }
   }
