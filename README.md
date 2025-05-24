@@ -47,7 +47,7 @@ lib/
 │   └── router/            # App routing configuration
 └── features/
     └── notes/
-        ├── data/          # Data layer (models, repositories)
+        ├── data/          # Data layer (models, data sources)
         ├── domain/        # Domain layer (entities, use cases)
         └── presentation/  # Presentation layer (screens, widgets, cubit)
 ```
