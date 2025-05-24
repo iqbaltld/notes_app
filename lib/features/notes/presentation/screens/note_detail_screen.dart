@@ -4,6 +4,7 @@ import 'package:notes_app/features/notes/presentation/cubit/notes_cubit.dart';
 
 
 class NoteDetailScreen extends StatelessWidget {
+  static const String name = 'NOTE_DETAIL_SCREEN';
   final String noteId;
 
   const NoteDetailScreen({super.key, required this.noteId});

@@ -4,7 +4,6 @@ import 'package:notes_app/features/notes/domain/entities/note.dart';
 import 'package:notes_app/features/notes/presentation/cubit/notes_cubit.dart';
 import 'package:notes_app/features/notes/presentation/screens/note_detail_screen.dart';
 
-
 class NoteTile extends StatelessWidget {
   final Note note;
 
@@ -22,12 +21,8 @@ class NoteTile extends StatelessWidget {
         height: 24,
       ),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => NoteDetailScreen(noteId: note.id),
-          ),
-        );
+        Navigator.pushNamed(context, NoteDetailScreen.name,
+            arguments: {'noteId': note.id});
       },
       onLongPress: () {
         context.read<NotesCubit>().toggleFavorite(note.id);
