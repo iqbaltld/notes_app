@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../features/notes/presentation/screens/notes_list_screen.dart';
+import 'package:notes_app/features/notes/presentation/screens/notes_list_screen.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {

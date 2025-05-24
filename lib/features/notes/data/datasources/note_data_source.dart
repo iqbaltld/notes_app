@@ -1,8 +1,8 @@
 
 import 'package:injectable/injectable.dart';
-import '../models/note_model.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:notes_app/features/notes/data/models/note_model.dart';
 
 
 

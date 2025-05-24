@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/notes_cubit.dart';
-import 'note_detail_screen.dart';
+import 'package:notes_app/features/notes/presentation/cubit/notes_cubit.dart';
+import 'package:notes_app/features/notes/presentation/screens/widgets/note_tile.dart';
 
 class NotesListScreen extends StatelessWidget {
   const NotesListScreen({super.key});
@@ -18,29 +18,8 @@ class NotesListScreen extends StatelessWidget {
           if (state is NotesLoaded) {
             return ListView.builder(
               itemCount: state.notes.length,
-              itemBuilder: (_, index) {
-                final note = state.notes[index];
-                return ListTile(
-                  title: Text(note.title),
-                  trailing: Image.asset(
-                    note.isFavorite
-                        ? 'assets/images/favourite.png'
-                        : 'assets/images/favourite-gray.png',
-                    width: 24,
-                    height: 24,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => NoteDetailScreen(noteId: note.id),
-                      ),
-                    );
-                  },
-                  onLongPress: () {
-                    context.read<NotesCubit>().toggleFavorite(note.id);
-                  },
-                );
+              itemBuilder: (context, index) {
+                return NoteTile(note: state.notes[index]);
               },
             );
           }

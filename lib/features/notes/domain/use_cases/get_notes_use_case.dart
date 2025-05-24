@@ -1,7 +1,6 @@
-
 import 'package:injectable/injectable.dart';
-import '../entities/note.dart';
-import '../repositories/note_repository.dart';
+import 'package:notes_app/features/notes/domain/entities/note.dart';
+import 'package:notes_app/features/notes/domain/repositories/note_repository.dart';
 
 @injectable
 class GetNotesUseCase {

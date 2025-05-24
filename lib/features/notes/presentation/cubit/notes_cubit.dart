@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/entities/note.dart';
-import '../../domain/use_cases/get_notes_use_case.dart';
+import 'package:notes_app/features/notes/domain/entities/note.dart';
+import 'package:notes_app/features/notes/domain/use_cases/get_notes_use_case.dart';
 part 'notes_state.dart';
 
 @injectable
