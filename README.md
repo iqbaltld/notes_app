@@ -8,18 +8,15 @@ This project explores two different approaches to Cubit injection:
 
 ### Main Branch (main)
 
-🧱 **Purpose:** The primary branch with global Cubit injection at the root (MaterialApp) level.
-✅ **Suitable for:** Small to medium apps where Cubits are shared across multiple screens or features.
-🔁 **Key Feature:** All screens access a single shared NotesCubit instance.
+🧱 **Purpose:** The primary branch with global Cubit injection at the root (MaterialApp) level.  
+✅ **Suitable for:** Small to medium apps where Cubits are shared across multiple screens or features.  
+🔁 **Key Feature:** All screens access a single shared NotesCubit instance.  
 
 ### Feature Branch (feature/local-cubit-injection)
 
-🧪 **Purpose:** Testing local Cubit injection only in screens where needed (BlocProvider inside each route).
-✅ **Suitable for:** Modular apps where features are isolated.
-🧩 **Key Benefits:**
-
-- Prevents bloating the app root with feature-specific Cubits
-- Fixes Cubit instance sharing using route arguments (BlocProvider.value) to preserve state across screens
+🧪 **Purpose:** Testing local Cubit injection only in screens where needed (BlocProvider inside each route).  
+✅ **Suitable for:** Modular apps where features are isolated.  
+🧩 **Key Benefits:** Easier scaling, independent feature testing, and reduced global state coupling.  
 
 ## Features
 
