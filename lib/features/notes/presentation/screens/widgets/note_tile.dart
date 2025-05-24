@@ -21,8 +21,15 @@ class NoteTile extends StatelessWidget {
         height: 24,
       ),
       onTap: () {
-        Navigator.pushNamed(context, NoteDetailScreen.name,
-            arguments: {'noteId': note.id});
+        final cubit = context.read<NotesCubit>();
+        Navigator.pushNamed(
+          context,
+          NoteDetailScreen.name,
+          arguments: {
+            'noteId': note.id,
+            'cubit': cubit,
+          },
+        );
       },
       onLongPress: () {
         context.read<NotesCubit>().toggleFavorite(note.id);
