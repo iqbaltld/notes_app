@@ -1,17 +1,20 @@
 import '../../domain/entities/note.dart';
 
 class NoteModel {
-  final int id;
+  final String id;
   final String title;
+  final bool isFavorite;
 
   const NoteModel({
     required this.id,
     required this.title,
+    this.isFavorite = false,
   });
 
   factory NoteModel.fromJson(Map<String, dynamic> json) => NoteModel(
-        id: (json['id'] as num).toInt(),
+        id: json['id'] as String,
         title: json['title'] as String,
+        isFavorite: json['isFavorite'] as bool? ?? false,
       );
 
   /// Converts this model into an Entity
@@ -19,6 +22,7 @@ class NoteModel {
     return Note(
       id: id,
       title: title,
+      isFavorite: isFavorite,
     );
   }
 }
